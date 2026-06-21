@@ -43,13 +43,28 @@
             pointer-events: none;
         }
 
-        .container {
+        /* Layout wrapper to handle central content and side image */
+        .layout-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 1200px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
             max-width: 650px;
             width: 100%;
-            position: relative;
-            z-index: 2;
-            margin-bottom: 40px; /* Brought content up */
+        }
+
+        .container {
+            margin-bottom: 40px;
         }
 
         .logo {
@@ -73,13 +88,27 @@
             color: #a0a0a8;
         }
 
+        /* Side Image Styling */
+        .side-image-container {
+            position: absolute;
+            right: -40px;
+            top: 250px; 
+            max-width: 340px;
+            width: 100%;
+        }
+
+        .side-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
         .cta-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 20px;
-            position: relative;
-            z-index: 2;
             padding-bottom: 60px;
             width: 100%;
             max-width: 400px;
@@ -144,28 +173,53 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+
+        /* Smooth adjustments for smaller screens so things don't layout messily */
+        @media (max-width: 1100px) {
+            .layout-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+            .side-image-container {
+                position: relative;
+                right: auto;
+                top: auto;
+                margin-top: 40px;
+                margin-bottom: 40px;
+                max-width: 450px;
+                padding: 0 20px;
+            }
+        }
     </style>
 </head>
 <body>
 
     <canvas id="snow-canvas"></canvas>
 
-    <div class="container">
-        <img class="logo" src="https://raw.githubusercontent.com/DexPPP/DexPPP.github.io/main/DexPlusPlusPlusLogo.png" alt="Logo">
-        <h1 class="headline">The Greatest Debugging Suite</h1>
-        <p class="description">
-            Dex+++ is your go-to explorer, specifically designed to help you debug or identify vulnerabilities within Roblox games. Originally created by Moon back around 2017–2018, Dex has seen many iterations over the years. Dex+++ stands out as one of the latest versions—a feature-rich, modified edition of Dex++ developed by Chillz.
-        </p>
-    </div>
+    <div class="layout-wrapper">
+        <div class="main-content">
+            <div class="container">
+                <img class="logo" src="https://raw.githubusercontent.com/DexPPP/DexPPP.github.io/main/DexPlusPlusPlusLogo.png" alt="Logo">
+                <h1 class="headline">The Greatest Debugging Suite</h1>
+                <p class="description">
+                    Dex+++ is your go-to explorer, specifically designed to help you debug or identify vulnerabilities within Roblox games. Originally created by Moon back around 2017–2018, Dex has seen many iterations over the years. Dex+++ stands out as one of the latest versions—a feature-rich, modified edition of Dex++ developed by Chillz.
+                </p>
+            </div>
 
-    <div class="cta-container">
-        <div class="btn-wrapper">
-            <button class="btn btn-loadstring" onclick="copyLoadstring()">Loadstring version</button>
-            <span class="badge">(Recommended)</span>
+            <div class="cta-container">
+                <div class="btn-wrapper">
+                    <button class="btn btn-loadstring" onclick="copyLoadstring()">Loadstring version</button>
+                    <span class="badge">(Recommended)</span>
+                </div>
+                
+                <div class="btn-wrapper">
+                    <a href="https://raw.githubusercontent.com/retelile/Dex/main/DexPlusPlusPlus.lua" class="btn btn-source" target="_blank" rel="noopener noreferrer">Source</a>
+                </div>
+            </div>
         </div>
-        
-        <div class="btn-wrapper">
-            <a href="https://raw.githubusercontent.com/retelile/Dex/main/DexPlusPlusPlus.lua" class="btn btn-source" target="_blank" rel="noopener noreferrer">Source</a>
+
+        <div class="side-image-container">
+            <img class="side-image" src="https://raw.githubusercontent.com/DexPPP/DexPPP.github.io/main/Moonwantedthis.png" alt="Preview Showcase">
         </div>
     </div>
 
