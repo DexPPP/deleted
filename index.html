@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dex+++ Debugging Suite</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1a1a1e;
+            color: #e2e2e6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 150vh;
+            padding: 60px 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        #snow-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 620px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 300px;
+        }
+
+        .logo {
+            max-width: 180px;
+            height: auto;
+            margin-bottom: 24px;
+        }
+
+        .headline {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .description {
+            font-size: 1.05rem;
+            line-height: 1.65;
+            color: #a0a0a8;
+        }
+
+        .cta-container {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            padding-bottom: 100px;
+        }
+
+        .cta-link {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: -1px;
+            transition: color 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .cta-link:hover {
+            color: #d1d1d6;
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="snow-canvas"></canvas>
+
+    <div class="container">
+        <img class="logo" src="https://raw.githubusercontent.com/DexPPP/DexPPP.github.io/main/DexPlusPlusPlusLogo.png" alt="Logo">
+        <h1 class="headline">The Greatest Debugging Suite</h1>
+        <p class="description">
+            Dex+++ is your go-to explorer, specifically designed to help you debug or identify vulnerabilities within Roblox games. Originally created by Moon back around 2017–2018, Dex has seen many iterations over the years. Dex+++ stands out as one of the latest versions—a feature-rich, modified edition of Dex++ developed by Chillz.
+        </p>
+    </div>
+
+    <div class="cta-container">
+        <a href="https://github.com/retelile/Dex/tree/main?tab=readme-ov-file" class="cta-link" target="_blank" rel="noopener noreferrer">Get the script!</a>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('snow-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        const numFlakes = 100;
+        const flakes = [];
+
+        for (let i = 0; i < numFlakes; i++) {
+            flakes.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                r: Math.random() * 2 + 1,
+                d: Math.random() * numFlakes,
+                speed: Math.random() * 1 + 0.5
+            });
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+            ctx.beginPath();
+            
+            for (let i = 0; i < numFlakes; i++) {
+                const f = flakes[i];
+                ctx.moveTo(f.x, f.y);
+                ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
+            }
+            ctx.fill();
+            update();
+        }
+
+        function update() {
+            for (let i = 0; i < numFlakes; i++) {
+                const f = flakes[i];
+                f.y += f.speed;
+                f.x += Math.sin(f.d / 10) * 0.5;
+
+                if (f.y > height) {
+                    flakes[i] = {
+                        x: Math.random() * width,
+                        y: -10,
+                        r: f.r,
+                        d: f.d,
+                        speed: f.speed
+                    };
+                }
+            }
+        }
+
+        function tick() {
+            draw();
+            requestAnimationFrame(tick);
+        }
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        tick();
+    </script>
+</body>
+</html>
