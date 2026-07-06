@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dex+++ Debugging Suite</title>
     <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/DexPPP/DexPPP.github.io/main/DexPPPLogo.png">
-    
+
     <meta property="og:title" content="Dex+++ Debugging Suite" />
     <meta property="og:description" content="Dex+++ is your go-to explorer, specifically designed to help you debug or identify vulnerabilities within Roblox games." />
     <meta property="og:image" content="https://raw.githubusercontent.com/DexPPP/DexPPP.github.io/main/DexPPPVersion3.png" />
@@ -91,7 +91,7 @@
         .side-image-container {
             position: absolute;
             right: -120px;
-            top: 380px; 
+            top: 380px;
             max-width: 480px;
             width: 100%;
         }
@@ -176,6 +176,148 @@
             100% { background-position: 0% 50%; }
         }
 
+        /* ===== Features section (same dark style as rest of page) ===== */
+        .features-section {
+            width: 100%;
+            max-width: 1000px;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .features-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .features-subtitle {
+            font-size: 1rem;
+            color: #a0a0a8;
+            margin-bottom: 36px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            text-align: left;
+        }
+
+        .feature-card {
+            background-color: #1a1a1e;
+            border: 1px solid #26262c;
+            border-radius: 12px;
+            padding: 22px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            border-color: #00a8fc;
+        }
+
+        .feature-emoji {
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .feature-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .feature-desc {
+            font-size: 0.9rem;
+            line-height: 1.55;
+            color: #a0a0a8;
+        }
+
+        /* ===== Quick start section ===== */
+        .quickstart-section {
+            width: 100%;
+            max-width: 650px;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            margin-top: 36px;
+        }
+
+        .quickstart-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            text-align: left;
+            margin-top: 28px;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #00a8fc;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .step-text {
+            font-size: 0.98rem;
+            line-height: 1.6;
+            color: #a0a0a8;
+            padding-top: 4px;
+        }
+
+        .step-text strong {
+            color: #e2e2e6;
+        }
+
+        .bottom-image-container {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            pointer-events: none;
+            margin: 0;
+            padding: 0;
+            line-height: 0;
+        }
+
+        .bottom-image-container .side-image {
+            width: 360px;
+            max-width: 42vw;
+            height: auto;
+            display: block;
+            /* push lower portion below the page edge so only her upper half shows */
+            transform: translateY(12%);
+        }
+
+        .footer-note {
+            position: relative;
+            z-index: 2;
+            margin-top: 40px;
+            font-size: 0.85rem;
+            color: #5a5a62;
+            text-align: center;
+            line-height: 1.7;
+        }
+
         @media (max-width: 1250px) {
             .layout-wrapper {
                 flex-direction: column;
@@ -191,6 +333,18 @@
                 padding: 0 20px;
             }
         }
+
+        @media (max-width: 900px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -203,7 +357,7 @@
                 <img class="logo" src="https://raw.githubusercontent.com/DexPPP/DexPPP.github.io/main/DexPlusPlusPlusLogo.png" alt="Logo">
                 <h1 class="headline">The Greatest Debugging Suite</h1>
                 <p class="description">
-                    Dex+++ is your go-to explorer, specifically designed to help you debug or identify vulnerabilities within Roblox games. Originally created by Moon back around 2017–2018, Dex has seen many iterations over the years. Dex+++ stands out as one of the latest versions—a feature-rich, modified edition of Dex++ developed by Chillz.
+                    Dex+++ is your go-to explorer, specifically designed to help you debug or identify vulnerabilities within Roblox games. Originally created by Moon back around 2017 to 2018, Dex has seen many iterations over the years. Dex+++ stands out as one of the latest versions, a feature rich, modified edition of Dex++ developed by Chillz.
                 </p>
             </div>
 
@@ -212,22 +366,121 @@
                     <button class="btn btn-loadstring" onclick="copyLoadstring()">Loadstring version</button>
                     <span class="badge">(Recommended)</span>
                 </div>
-                
+
                 <div class="btn-wrapper">
                     <a href="https://raw.githubusercontent.com/retelile/Dex/main/DexPlusPlusPlus.lua" class="btn btn-source" target="_blank" rel="noopener noreferrer">Source</a>
                 </div>
             </div>
         </div>
-
-        <div class="side-image-container">
-            <img class="side-image" src="https://raw.githubusercontent.com/DexPPP/DexPPP.github.io/main/Moonwantedthis.png" alt="Preview Showcase">
-        </div>
     </div>
+
+    <section class="features-section">
+        <h2 class="features-title">What's inside? ✨</h2>
+        <p class="features-subtitle">Everything you need to poke around a game, all in one cozy suite.</p>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <span class="feature-emoji">📂</span>
+                <div class="feature-name">Advanced Object Explorer</div>
+                <p class="feature-desc">A speedy virtual tree that renders massive instance hierarchies without lag. Real time instance tracking plus deep nested search and dynamic filtering.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-emoji">📊</span>
+                <div class="feature-name">Dynamic Property Inspector</div>
+                <p class="feature-desc">Inspect and tweak reflection data on the fly. Changed signal listeners track state mutations the instant they happen.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-emoji">📐</span>
+                <div class="feature-name">3D Model Viewer</div>
+                <p class="feature-desc">A cozy isolated viewport to pull out any model and study its geometry and spatial data away from the busy workspace.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-emoji">🔒</span>
+                <div class="feature-name">Inline Script Obfuscator</div>
+                <p class="feature-desc">Protect your runtime strings and generated logic right inside the environment with localized AST transformations.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-emoji">💻</span>
+                <div class="feature-name">Developer Console</div>
+                <p class="feature-desc">A clean, low overhead log engine that catches output, errors and warnings with precise microsecond timestamps.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-emoji">🕵️</span>
+                <div class="feature-name">Embedded Network Spy</div>
+                <p class="feature-desc">Intercepts and decodes RemoteEvent and RemoteFunction calls, with tidy data serialization for quick payload analysis.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-emoji">💬</span>
+                <div class="feature-name">Real Time Chat Logger</div>
+                <p class="feature-desc">Quietly captures incoming and outgoing chat, whispers, system logs and channel messages with source indexing.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-emoji">💾</span>
+                <div class="feature-name">High Efficiency Save Instance</div>
+                <p class="feature-desc">A fully overhauled serialization engine that skips the slow default dumping. Structural compression means smaller files and way less disk writing.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-emoji">📝</span>
+                <div class="feature-name">Integrated Notepad</div>
+                <p class="feature-desc">A little scratchpad for hot swapping code snippets, jotting down memory addresses, or staging scripts mid debugging session.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-emoji">🔮</span>
+                <div class="feature-name">Infinite Yield Commands</div>
+                <p class="feature-desc">The beloved Infinite Yield command suite, baked right into Dex+++ so all your favorite commands live one window away.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-emoji">🎶</span>
+                <div class="feature-name">Audio Logger</div>
+                <p class="feature-desc">Peek at the ID of any audio playing in the game, so you never have to wonder what track is looping in the background.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="quickstart-section">
+        <h2 class="features-title">Getting started 🚀</h2>
+
+        <div class="quickstart-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <p class="step-text"><strong>Copy the loadstring</strong> with the big rainbow button up top. It lands right in your clipboard.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <p class="step-text"><strong>Paste it into your executor</strong> of choice while in a Roblox game.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <p class="step-text"><strong>Run it</strong> and the Dex+++ window pops up, with the whole game tree yours to explore. Happy debugging! 💙</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="bottom-image-container">
+        <img class="side-image" src="https://raw.githubusercontent.com/DexPPP/DexPPP.github.io/main/Moonwantedthis.png" alt="Preview Showcase">
+    </div>
+
+    <p class="footer-note">
+        Original Dex by Moon (2017 to 2018) · Dex++ community edition · Dex+++ by Chillz<br>
+        Made with 💙 for curious minds. Not affiliated with Roblox Corporation.
+    </p>
 
     <script>
         function copyLoadstring() {
             const scriptCode = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/retelile/Dex/main/DexPlusPlusPlus.lua"))()';
-            
+
             navigator.clipboard.writeText(scriptCode).then(() => {
                 alert('Loadstring copied to clipboard!');
             }).catch(() => {
@@ -258,7 +511,7 @@
             ctx.clearRect(0, 0, width, height);
             ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
             ctx.beginPath();
-            
+
             for (let i = 0; i < numFlakes; i++) {
                 const f = flakes[i];
                 ctx.moveTo(f.x, f.y);
